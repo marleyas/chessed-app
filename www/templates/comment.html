@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">Comentarios de {{ parashatHaftara.p_name }} / {{ dataServer.jewish_year }}</h1>
+    <div class="buttons">
+      <button class="button button-clear ion-button icon-only" ng-click="closeComment()"> 
+        <i class="icon ion-close-circled"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list" style="margin-bottom: 0px;">
+      <div class="item item-avatar item-text-wrap" ng-repeat="c in dataServer.comments">
+        <img ng-src="{{ c.user.avatar }}">
+        <p><b>{{ c.user.name }}</b> {{ c.created_at.fromNow() }}<br> {{ c.comment }}</p>
+      </div>
+    </div>    
+    <div style="width: 100%; background-color: #f8f8f8;">
+      <form name="formComment" ng-submit="doComment(messageText)">
+        <div class="row">
+          <div class="col col-75">        
+            <textarea class="ion-textarea" style="width: 99%; height: 40PX; border: 1px solid #ccc" ng-model="messageText" name="messageText" required></textarea>
+          </div>
+          <div class="col col-25">
+            <button class="button button-positive button-block" type="submit" style="height: 40PX;margin: 0px;" ng-disabled="formComment.messageText.$valid == false">Enviar</button>
+          </div>
+        </div>       
+      </form>
+    </div>
+  </ion-content>  
+  <ion-footer-bar style="padding: 0px">  
+    <button class="button button-full button-balanced" style="margin: 0px" ng-click="closeComment()">Fechar</button> 
+  </ion-footer-bar>
+</ion-modal-view>

@@ -1,0 +1,15 @@
+<ion-view view-title="Biblia Hebraica">
+  <ion-content>    
+    <ion-item-group ng-repeat="g in groupBooks">
+      <ion-item class="item-divider item-icon-right" ng-click="toggleGroup(g.id)">
+        {{ g.name }}
+        <i class="icon icon-accessory" ng-class="isGroupShown(g.id) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>        
+      </ion-item>
+      
+      <ion-item class="item-icon-right" ng-repeat="b in books | filter: {group_id: g.id}" href="#/tab/biblia-detail/{{b.id}}" ng-show="isGroupShown(g.id)">
+        <p>{{ b.name_pt }} ({{ b.name_he }})</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>        
+      </ion-item>
+    </ion-item-group>
+  </ion-content>
+</ion-view>

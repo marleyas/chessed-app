@@ -1,0 +1,34 @@
+<ion-view view-title="Divrim">
+  <ion-content>
+      <div class="item item-divider">
+        Selecione o Divre e clique no botão PLAY...
+      </div>
+      <ion-item-group ng-repeat="y in [5777,5776,5775]">
+        <ion-item class="item-divider item-icon-right" ng-click="toggleGroup(y)">
+          Ano {{ y }}
+          <i class="icon icon-accessory" ng-class="isGroupShown(y) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>        
+        </ion-item>
+        <ion-radio ng-repeat="d in divrin | filter: {jewish_year: y}" ng-click="setActualDivre(d.id)" value="{{ d.id }}" ng-disabled="d.url.length == 0" ng-show="isGroupShown(y)"  ng-if="d.url.length > 1">{{ d.parashat.p_name }}  /  {{ d.jewish_year }}</ion-radio>     
+      </ion-item-group>
+    <div style="min-height: 140px" ng-if="dinamicDivre">
+    <br><br><br><br><br><br>
+    </div>
+  </ion-content> 
+  <ion-list style="position: absolute; bottom: 0px; width: 100%" ng-if="dinamicDivre">
+    <ion-audio-track track="dinamicDivre" toggle-playback="togglePlayback">      
+        <div class="item item-button-right" style="min-height: 70px">
+          <h2>{{ dinamicDivre.title }}</h2>
+          <p><i class="icon ion-android-calendar" ng-if="dinamicDivre"></i> {{ dinamicDivre.created_at.format('dddd, D [de] MMMM [de] YYYY') }}</p>
+          <div class="buttons">
+            <ion-audio-controls>
+              <ion-spinner icon="lines" style="position: relative; top: 8px; left: 4px"></ion-spinner>
+              <button class="button button-energized icon-only" ng-disabled="dinamicDivre == false" ion-audio-play></button>
+            </ion-audio-controls>
+          </div>
+        </div>
+        <div class="item item-divider item-stable" style="padding-bottom: 1px">
+          <ion-audio-progress-bar track="dinamicDivre" display-time></ion-audio-progress-bar>
+        </div>      
+    </ion-audio-track>    
+  </ion-list>
+</ion-view>

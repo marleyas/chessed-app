@@ -1,0 +1,82 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 22/06/2016 15:21
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        /*font-size: 20px;*/
+        font-size: 1em;
+font-style: normal;
+margin-left: 0px;
+}
+
+.flaticon-apple-and-honey:before { content: "\f100"; }
+.flaticon-apple-cake:before { content: "\f101"; }
+.flaticon-ark-of-the-convenant:before { content: "\f102"; }
+.flaticon-big-menorah:before { content: "\f103"; }
+.flaticon-budding-staff:before { content: "\f104"; }
+.flaticon-burning-bush:before { content: "\f105"; }
+.flaticon-captives-to-egypt:before { content: "\f106"; }
+.flaticon-challah:before { content: "\f107"; }
+.flaticon-chicken-facing-left:before { content: "\f108"; }
+.flaticon-dreidel:before { content: "\f109"; }
+.flaticon-four-species:before { content: "\f10a"; }
+.flaticon-gefilte-fish:before { content: "\f10b"; }
+.flaticon-gragger:before { content: "\f10c"; }
+.flaticon-halakha:before { content: "\f10d"; }
+.flaticon-half-pomegranate:before { content: "\f10e"; }
+.flaticon-hamantaschen:before { content: "\f10f"; }
+.flaticon-hamsa-hand:before { content: "\f110"; }
+.flaticon-hebrew-wine:before { content: "\f111"; }
+.flaticon-inclined-fish:before { content: "\f112"; }
+.flaticon-israel-barley:before { content: "\f113"; }
+.flaticon-israel-flag:before { content: "\f114"; }
+.flaticon-jewish-bagels:before { content: "\f115"; }
+.flaticon-jewish-candles:before { content: "\f116"; }
+.flaticon-jewish-coins:before { content: "\f117"; }
+.flaticon-jewish-incense:before { content: "\f118"; }
+.flaticon-kippah:before { content: "\f119"; }
+.flaticon-kotel:before { content: "\f11a"; }
+.flaticon-lamb-of-god:before { content: "\f11b"; }
+.flaticon-laver-of-washing:before { content: "\f11c"; }
+.flaticon-lion-of-judah:before { content: "\f11d"; }
+.flaticon-manna-jar:before { content: "\f11e"; }
+.flaticon-matzo:before { content: "\f11f"; }
+.flaticon-matzo-ball-soup:before { content: "\f120"; }
+.flaticon-mezuzah:before { content: "\f121"; }
+.flaticon-moses:before { content: "\f122"; }
+.flaticon-ner-tamid:before { content: "\f123"; }
+.flaticon-ohr:before { content: "\f124"; }
+.flaticon-olive-branch:before { content: "\f125"; }
+.flaticon-rabbi:before { content: "\f126"; }
+.flaticon-religious-salt:before { content: "\f127"; }
+.flaticon-shofar:before { content: "\f128"; }
+.flaticon-solomon-temple-in-jerusalem:before { content: "\f129"; }
+.flaticon-star-of-david:before { content: "\f12a"; }
+.flaticon-sufganiyah:before { content: "\f12b"; }
+.flaticon-synagogue:before { content: "\f12c"; }
+.flaticon-tallit:before { content: "\f12d"; }
+.flaticon-tefilin:before { content: "\f12e"; }
+.flaticon-torah:before { content: "\f12f"; }
+.flaticon-torah-book:before { content: "\f130"; }
+.flaticon-tree-of-life:before { content: "\f131"; }

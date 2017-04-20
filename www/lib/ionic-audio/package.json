@@ -1,0 +1,26 @@
+{
+  "name": "ionic-audio",
+  "version": "2.3.0",
+  "description": "An audio player for Ionic 2 and Angular 2",
+  "main": "dist/ionic-audio/ionic-audio.module.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arielfaur/ionic-audio.git"
+  },
+  "keywords": [
+    "ionic",
+    "angular",
+    "audio",
+    "player",
+    "typescript"
+  ],
+  "author": "Ariel Faur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arielfaur/ionic-audio/issues"
+  },
+  "homepage": "https://github.com/arielfaur/ionic-audio#readme"
+}

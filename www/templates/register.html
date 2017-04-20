@@ -1,0 +1,43 @@
+<ion-view view-title="Liberar acesso ao conteúdo" cache-view="false">
+  <ion-content>
+    <div class="home-img">
+      <img src="img/keila.jpg">
+      <div class="home-title" text-wrap>
+        Favor preencher todos os campos abaixo
+      </div>
+    </div>
+    <form name="formRegister" ng-submit="doRegister()">      
+      <div class="list">
+        <label class="item item-input">
+          <i class="icon ion-person placeholder-icon"></i>          
+          <input type="text" placeholder="Nome (ou apelido)" name="nameRegister" ng-model="register.name" required  pattern=".{4,}">
+          <i class="icon ion-checkmark balanced" style="margin-right: 10px" ng-if="formRegister.nameRegister.$valid == true"></i>          
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-android-phone-portrait placeholder-icon"></i>
+          <input type="tel" placeholder="Telefone celular (com DDD)" name="celphoneRegister" ng-model="register.celphone" required  pattern=".{10,}">
+          <i class="icon ion-checkmark balanced" style="margin-right: 10px" ng-if="formRegister.celphoneRegister.$valid == true"></i>
+        </label>
+        <label class="item item-input"> 
+          <i class="icon ion-android-mail placeholder-icon"></i>         
+          <input type="email" placeholder="Email" name="emailRegister" ng-model="register.email" required>
+          <i class="icon ion-checkmark balanced" style="margin-right: 10px" ng-if="formRegister.emailRegister.$valid == true"></i>
+        </label>
+        <label class="item item-input">
+          <i class="icon ion-unlocked placeholder-icon"></i>          
+          <input type="number" placeholder="Código de liberação (6 digítos)" name="codeRegister" ng-model="register.code" required maxlength="6" pattern=".{6,6}">
+          <i class="icon ion-checkmark balanced" style="margin-right: 10px" ng-if="formRegister.codeRegister.$valid == true"></i>
+        </label>
+        <button class="button button-balanced col col-60 col-offset-20" style="margin-top: 10px; margin-bottom: 10px" ng-disabled="formRegister.$valid == false"><i class="icon ion-unlocked" style="margin-right: 5px"></i>  Liberar acesso</button>
+        <div class="item  item-thumbnail-left item-text-wrap">
+          <img src="img/nelson.jpg">
+          <p>Entre em contato com NELSON HORTA para obter o código de liberação.<br>
+            <a href="tel:31994725926" class="button"><i class="icon ion-android-call"></i></a>
+            <a href="sms:31994725926" class="button"><i class="icon ion-android-textsms"></i></a>
+            <a href="whatsapp://send?text=acesso%20ao%20App" class="button"><i class="icon ion-social-whatsapp"></i></a>
+          </p>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

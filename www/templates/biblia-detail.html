@@ -1,0 +1,35 @@
+<ion-view view-title="Biblia Hebraica {{ book.name_pt }}" cache-view="false">
+  <ion-content delegate-handle="biblePageDelegate" style="padding-bottom: -10px">
+    <div class="padding book-title">
+      <h3>{{ book.name_pt }} ({{ book.name_he }})</h3>
+    </div>
+    <ion-item-group data-ng-repeat="n in [] | range:book.chapters_num">
+      <ion-item class="item-divider item-icon-right" id="{{ n+1 }}" ng-click="loadChapter(n+1)">
+        Capítulo {{ n+1 }} / {{ book.chapters_num }}
+        <i class="icon ion-chevron-down icon-accessory" ng-if="actualChapter != n+1"></i>
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="v in bookContent | filter: {chapter: n+1}">
+        <p><strong>{{ v.verse_number }}</strong> {{ v.content }}</p>
+      </ion-item>
+    </ion-item-group>
+    <br><br><br>
+  </ion-content>
+  <ion-list style="position: absolute; bottom: 0px; width: 100%">
+    <div class="item item-divider item-stable" style="padding: 0px">
+      <div class="row" style="padding: 0px">
+        <button class="col col-25 button" ng-click="jumpToChapter(1)" ng-disabled="actualChapter == 1">
+          <i class="icon ion-arrow-up-b"></i>
+        </button>
+        <button class="col col-25 button" ng-click="jumpToChapter(actualChapter - 1)" ng-disabled="actualChapter == 1">
+          <i class="icon ion-arrow-left-b"></i>
+        </button>
+        <button class="col col-25 button" ng-click="jumpToChapter(actualChapter + 1)" ng-disabled="actualChapter == book.chapters_num">
+          <i class="icon ion-arrow-right-b"></i>
+        </button>
+        <button class="col col-25 button" ng-click="jumpToChapter(book.chapters_num)" ng-disabled="actualChapter == book.chapters_num">
+          <i class="icon ion-arrow-down-b"></i>
+        </button>
+      </div>
+    </div>
+  </ion-list>  
+</ion-view>

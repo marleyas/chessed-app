@@ -1,0 +1,223 @@
+<ion-view view-title="Chessed B' Avraham" cache-view="false">
+  <ion-content>    
+    <div class="home-img">
+      <img ng-src="{{ imageHome }}" />
+      <div class="home-title" text-wrap>
+        <h2>Parashat {{ parashatHaftara.p_name }}</h2>
+        Torá: {{ parashatHaftara.p_book_name_pt }} {{ parashatHaftara.p_chapter_start }}:{{ parashatHaftara.p_verse_start }}-{{ parashatHaftara.p_chapter_end
+        }}:{{ parashatHaftara.p_verse_end }} <br> Haftará: {{ parashatHaftara.h_book_name_pt }} {{ parashatHaftara.h_chapter_start
+        }}:{{ parashatHaftara.h_verse_start }}-{{ parashatHaftara.h_chapter_end }}:{{ parashatHaftara.h_verse_end }}
+      </div>
+    </div>    
+    <div style="padding-left: 5px">
+      <ion-row>
+        <ion-col width-20 id="btnParachat">
+          <button class="button button-large flaticon-large" ng-click="setActiveItem('parashat')" ng-class="{'bg-white': activeItem == 'parashat'}">
+          <i class="flaticon-halakha"></i>       
+        </button>
+        </ion-col>
+        <ion-col width-20>
+          <button class="button button-large flaticon-large" ng-click="setActiveItem('haftara')" ng-class="{'bg-white': activeItem == 'haftara'}">
+          <i class="flaticon-torah-book"></i>       
+        </button>
+        </ion-col>
+        <ion-col width-20>
+          <button class="button button-large flaticon-large" ng-click="setActiveItem('divre')" ng-class="{'bg-white': activeItem == 'divre'}">
+          <i class="flaticon-rabbi"></i>       
+        </button>
+        </ion-col>
+        <ion-col width-20>
+          <button class="button button-large flaticon-large" ng-click="setActiveItem('blog')" ng-class="{'bg-white': activeItem == 'blog'}">
+          <i class="flaticon-shofar"></i>       
+        </button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div ng-if="activeItem =='parashat'">
+      <ion-audio-track track="dataServer.trackParashat" toggle-playback="togglePlayback">
+        <div class="card">
+          <div class="item item-button-right">
+            <h2>Leitura da Parashat {{ parashatHaftara.p_name }}</h2>
+            <p>{{ parashatHaftara.p_book_name_pt }} {{ parashatHaftara.p_chapter_start }}:{{ parashatHaftara.p_verse_start }}-{{
+              parashatHaftara.p_chapter_end }}:{{ parashatHaftara.p_verse_end }}</p>
+            <div class="buttons">
+              <ion-audio-controls>
+                <ion-spinner icon="lines" style="position: relative; top: 8px; left: 4px"></ion-spinner>
+                <button class="button button-balanced icon-only" ion-audio-play ng-disabled="dataServer.trackParashat.url.length == 0"></button>
+              </ion-audio-controls>
+            </div>
+          </div>
+          <div class="item item-divider" style="padding-bottom: 1px;padding-top: 1px">
+            <ion-audio-progress-bar track="dataServer.trackParashat" display-time></ion-audio-progress-bar>
+          </div>
+        </div>
+      </ion-audio-track>
+      <h4 style="margin-left:10px">Torás: {{ parashatHaftara.p_book_name_pt }} {{ parashatHaftara.p_chapter_start }}:{{ parashatHaftara.p_verse_start }}-{{
+        parashatHaftara.p_chapter_end }}:{{ parashatHaftara.p_verse_end }}</h4>        
+      <div ng-repeat="v in parashat">
+        <div class="item item-divider" ng-if="v.verse_number == 1">
+          Capítulo {{ v.chapter }}
+        </div>
+        <ion-item class="item-text-wrap">
+          <p ng-if="v.verse_number == parashatHaftara.m_verse && v.chapter == parashatHaftara.m_chapter"> <span class="badge badge-assertive">Maftir</span>&nbsp;</p>          
+          <p><strong>{{ v.verse_number }}</strong> {{ v.content }}</p>
+        </ion-item>
+      </div>      
+    </div>
+    <div ng-if="activeItem =='haftara'">
+      <ion-audio-track track="dataServer.trackHaftara" toggle-playback="togglePlayback">
+        <div class="card">
+          <div class="item item-button-right">
+            <h2>Leitura da Haftará de {{ parashatHaftara.p_name }}</h2>
+            <p>{{ parashatHaftara.h_book_name_pt }} {{ parashatHaftara.h_chapter_start }}:{{ parashatHaftara.h_verse_start }}-{{
+              parashatHaftara.h_chapter_end }}:{{ parashatHaftara.h_verse_end }}</p>
+            <div class="buttons">
+              <ion-audio-controls>
+                <ion-spinner icon="lines" style="position: relative; top: 8px; left: 4px"></ion-spinner>
+                <button class="button button-balanced icon-only" ion-audio-play ion-audio-play ng-disabled="dataServer.trackHaftara.url.length == 0"></button>
+              </ion-audio-controls>
+            </div>
+          </div>
+          <div class="item item-divider" style="padding-bottom: 1px;padding-top: 1px">
+            <ion-audio-progress-bar track="dataServer.trackHaftara" display-time></ion-audio-progress-bar>
+          </div>
+        </div>
+      </ion-audio-track>
+      <h4 style="margin-left:10px">Haftará: {{ parashatHaftara.h_book_name_pt }} {{ parashatHaftara.h_chapter_start }}:{{ parashatHaftara.h_verse_start
+        }}-{{ parashatHaftara.h_chapter_end }}:{{ parashatHaftara.h_verse_end }}</h4>
+      <div ng-repeat="h in haftara">
+        <div class="item item-divider" ng-if="h.verse_number == 1">
+          Capítulo {{ h.chapter }}
+        </div>
+        <ion-item class="item-text-wrap">
+          <p><strong>{{ h.verse_number }}</strong> {{ h.content }}</p>
+        </ion-item>
+      </div>      
+    </div>
+    <div ng-if="activeItem =='divre'">
+      <ion-audio-track track="dataServer.trackDivre" toggle-playback="togglePlayback" ng-switch="dataServer.url_audio.length">
+        <div style="padding: 20px" ng-switch-when="0">
+          <h4 class="assertive"><i class="icon ion-android-alert"></i> Divre ainda não disponível!</h4>
+        </div>
+        <div class="card" ng-switch-default>
+          <div class="item item-thumbnail-left">
+            <img src="img/nelson.jpg">
+            <h2>Divre de {{ parashatHaftara.p_name }} / {{ dataServer.jewish_year }}</h2>
+            <p><i class="icon ion-android-calendar"></i> Publicado {{ dataServer.created_at.fromNow() }}</p>
+            <ion-audio-controls>
+              <button class="button button-balanced icon-only" ion-audio-play ng-disabled="dataServer.url_audio == ''"></button>
+              <ion-spinner icon="lines" style="position: relative; top: 8px; left: 4px"></ion-spinner>
+            </ion-audio-controls>
+          </div>
+          <div class="item item-divider" style="padding-bottom: 1px;padding-top: 1px">
+            <ion-audio-progress-bar track="dataServer.trackDivre" display-time></ion-audio-progress-bar>
+          </div>
+        </div>
+      </ion-audio-track>
+      <div ng-if="dataServer.url_audio.length > 0">
+        <div style="text-align:center;margin-bottom: 20px" ng-switch="dataServer.comments.length">
+          <div ng-switch-when="0">
+            <p>O Divre não possui nenhum comentário.<br />Seja o primeiro a comentar.</p>
+            <button class="button button-balanced button-outline" ng-click="openComment()" ng-disabled="dataServer.url_audio == ''"> Postar comentário</button>
+          </div>
+          <div ng-switch-default>
+            <button class="button button-balanced button-outline" ng-click="openComment()"><i class="icon ion-android-chat" style="margin-right: 5px"></i> Comentários ({{ dataServer.comments.length }})</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <div ng-if="activeItem =='blog'">
+      <div class="card">        
+        <div class="item item-icon-left">
+          <h2>{{ dataServer.hebcal_date }}<p>{{ dataServer.local_date }}</p></h2>
+          <i class="icon ion-android-calendar" style="color:#666666"></i>
+        </div>
+      </div>
+      <div class="card" ng-repeat="p in posts">        
+        <div class="item item-avatar">
+          <img ng-src="{{ p.user.avatar }}">
+          <h2>{{ p.title }}</h2>
+          <p><i class="icon ion-android-calendar"></i> Publicado {{ p.created_at.fromNow() }}</p>
+        </div>
+        <div class="item item-body">          
+          <ion-audio-track track="p.track" toggle-playback="togglePlayback" ng-if="p.audio.length > 0">      
+              <div class="item item-button-right" style="min-height: 70px">
+                <h2>{{ p.audio_text }}</h2>                
+                <div class="buttons">
+                  <ion-audio-controls>
+                    <ion-spinner icon="lines" style="position: relative; top: 8px; left: 4px"></ion-spinner>
+                    <button class="button button-calm icon-only" ng-disabled="p.audio.length == 0" ion-audio-play></button>
+                  </ion-audio-controls>
+                </div>
+              </div>
+              <div class="item item-divider item-stable" style="padding-bottom: 1px">
+                <ion-audio-progress-bar track="p.track" display-time></ion-audio-progress-bar>
+              </div>      
+          </ion-audio-track>
+          <div class="video-container" ng-if="p.video.length > 0">            
+            <iframe src="{{ p.video }}" frameborder="0" width="640" height="360" allowfullscreen></iframe>
+          </div>        
+          <img class="full-image" ng-src="{{ p.image }}" ng-if="p.image.length > 0" ng-click="openImage(p.image)">
+          <p>{{ p.content }}</p>
+      </div>       
+    </div>    
+  </ion-content>
+
+  <script id="comment.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Comentarios de {{ parashatHaftara.p_name }} / {{ dataServer.jewish_year }}</h1>
+        <div class="buttons">
+          <button class="button button-clear ion-button icon-only" ng-click="closeComment()"> 
+          <i class="icon ion-close-circled"></i>
+        </button>
+        </div>
+      </ion-header-bar>
+      <ion-content>
+        <div class="list" style="margin-bottom: 0px;">
+          <div class="item item-avatar item-text-wrap" ng-repeat="c in dataServer.comments">
+            <img ng-src="{{ c.user.avatar }}">
+            <p><b>{{ c.user.name }}</b> {{ c.created_at.fromNow() }}<br> {{ c.comment }}</p>
+          </div>
+        </div>
+        <div style="width: 100%; background-color: #f9f9f9;">
+          <form name="formComment" ng-submit="doComment(messageText)">
+            <div class="row">
+              <div class="col col-75">
+                <textarea class="ion-textarea" style="width: 99%; height: 40PX;" ng-model="messageText" name="messageText" required></textarea>
+              </div>
+              <div class="col col-25">
+                <button class="button button-positive button-block" type="submit" style="height: 40PX;margin: 0px;" ng-disabled="formComment.messageText.$valid == false">Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ion-content>
+      <ion-footer-bar style="padding: 0px">
+        <button class="button button-full button-balanced" style="margin: 0px" ng-click="closeComment()">Fechar</button>
+      </ion-footer-bar>
+    </ion-modal-view>
+  </script>
+
+  <script id="gallery.html" type="text/ng-template">
+    <!--div class="modal image-modal transparent" on-swipe-down="closeModal()">
+      <ion-slide-box on-slide-changed="slideChanged(index)" active-slide="activeSlide">
+        <ion-slide ng-repeat="image in allImages">    
+          <ion-scroll direction="xy" scrollbar-x="false" scrollbar-y="false"
+          zooming="true" min-zoom="{{zoomMin}}" style="width: 100%; height: 100%"
+          delegate-handle="scrollHandle{{$index}}" on-scroll="updateSlideStatus(activeSlide)" on-release="updateSlideStatus(activeSlide)">
+    
+          <div class="image" style="background-image: url( {{image.src}} )"></div>
+          
+        </ion-scroll>
+      </ion-slide>
+    </ion-slide-box>
+  </div--> 
+  <div class="modal image-modal transparent" ng-click="closeImage()">
+    <ion-pane class="bg-image">
+      <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
+    </ion-pane>
+  </div> 
+</script>
+
+</ion-view>

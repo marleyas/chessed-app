@@ -1,0 +1,22 @@
+<ion-view view-title="Orações do Sidur" cache-view="false">
+  <ion-content>
+    <div class=" prayer-title padding">
+      <h3>{{ sidurim.name }}</h3>
+      <p>
+        {{ sidurim.description }}
+      </p>
+    </div>
+    <ion-item-group ng-repeat="s in sidurim.sections">
+      <ion-item class="item-divider item-icon-right" ng-click="toggleGroup(s.id)">
+        {{ s.name }}
+        <i class="icon icon-accessory" ng-class="isGroupShown(s.id) ?  'ion-chevron-up' : 'ion-chevron-down'"></i>
+      </ion-item>
+      <ion-item class="item-text-wrap" ng-repeat="p in s.prayers" ng-show="isGroupShown(s.id)" on-swipe-right="changeLanguage(p)" on-swipe-left="changeLanguage(p)">        
+        <strong ng-if="p.language == 'pt'">{{ p.name_pt }}</strong>
+        <strong ng-if="p.language == 'he'">{{ p.name_he }} <i class="icon ion-arrow-return-left" style="float: right"></i></strong>
+        <p ng-if="p.language == 'pt'">{{ p.content_pt }}</p>
+        <p ng-if="p.language == 'he'">{{ p.content_he }}</p>
+      </ion-item>
+    </ion-item-group>
+  </ion-content>
+</ion-view>

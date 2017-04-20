@@ -1,0 +1,61 @@
+<ion-view view-title="Parashat {{ parashat.p_name }}" cache-view="false">
+  <ion-content>
+      <h3 style="margin-left:10px; margin-top: 10px">{{ parashat.id }} - {{ parashat.p_name }}
+            <i class="flaticon-torah-book" style="float: right; margin-right: 10px;" ng-click="setActiveItem('parashat')" ng-if="activeItem =='haftara'"></i>
+            <i class="flaticon-halakha" style="float: right; margin-right: 10px;" ng-click="setActiveItem('haftara')" ng-if="activeItem =='parashat'"></i>
+      </h3>
+      <div ng-if="activeItem =='parashat'">
+        <h4 style="margin-left:10px; margin-top: 10px">Parashat {{ parashat.p_name }}</h4>    
+          <ion-audio-track track="trackParashat" toggle-playback="togglePlayback">
+            <div class="item item-button-right">
+              <h4>Leitura da parashat {{ parashat.p_name }}</h4>          
+              <p>{{ parashat.p_book_name_pt }} {{ parashat.p_chapter_start }}:{{ parashat.p_verse_start }}-{{
+              parashat.p_chapter_end }}:{{ parashat.p_verse_end }}</p>
+              <div class="buttons">
+                <ion-audio-controls>
+                  <ion-spinner icon="lines" style="position: relative; top: 8px; left: 4px;"></ion-spinner>
+                  <button class="button button-balanced icon-only" ion-audio-play ng-disabled="parashat.p_audio == ''"></button>
+                </ion-audio-controls>
+              </div>
+            </div>
+          </ion-audio-track>          
+          <div ng-repeat="v in parashatContent">
+            <div class="item item-divider" ng-if="v.verse_number == 1">
+              Capítulo {{ v.chapter }}
+            </div>
+            <ion-item class="item-text-wrap">
+              <p ng-if="v.verse_number == parashat.m_verse && v.chapter == parashat.m_chapter"> <span class="badge badge-assertive">Maftir</span>&nbsp;</p>
+              <p><strong>{{ v.verse_number }}</strong> {{ v.content }}</p>
+            </ion-item>
+          </div>        
+        </div>
+        <div ng-if="activeItem =='haftara'">
+        <h4 style="margin-left:10px; margin-top: 10px">Haftara de {{ parashat.p_name }}</h4>     
+        <ion-audio-track track="trackHaftara" toggle-playback="togglePlayback">
+          <div class="item item-button-right">
+            <h4>Leitura da haftara de {{ parashat.p_name }}</h4>
+            <p>{{ parashat.h_book_name_pt }} {{ parashat.h_chapter_start }}:{{ parashat.h_verse_start }}-{{
+            parashat.h_chapter_end }}:{{ parashat.h_verse_end }}</p>
+            <div class="buttons">
+              <ion-audio-controls>
+                <ion-spinner icon="lines" style="position: relative; top: 8px; left: 4px"></ion-spinner>
+                <button class="button button-balanced icon-only" ion-audio-play ng-disabled="parashat.h_audio == ''"></button>
+              </ion-audio-controls>
+            </div>
+          </div>
+        </ion-audio-track>
+          <div ng-repeat="h in haftaraContent">
+            <div class="item item-divider" ng-if="h.verse_number == 1">
+              Capítulo {{ h.chapter }}
+            </div>
+            <ion-item class="item-text-wrap">              
+              <p><strong>{{ h.verse_number }}</strong> {{ h.content }}</p>
+            </ion-item>
+          </div>      
+        </div>
+      <h3>
+        <i class="flaticon-torah-book" style="float: right; margin-right: 10px; margin-bottom: 10px" ng-click="setActiveItem('parashat')" ng-if="activeItem =='haftara'"></i>
+        <i class="flaticon-halakha" style="float: right; margin-right: 10px; margin-bottom: 10px" ng-click="setActiveItem('haftara')" ng-if="activeItem =='parashat'"></i>
+      </h3>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view view-title="Divrim">
+  <ion-content>
+    <ion-audio-track ng-repeat="d in divrin" track="d">
+      <div class="card">
+        <div class="item item-button-right">
+          <h2>{{ d.parashat.p_name }} / {{ d.jewish_year }}</h2>
+          <p>Publicado a {{ d.created_at.fromNow() }}</p>
+          <div class="buttons">
+            <ion-audio-controls>
+              <ion-spinner icon="ios" style="position: relative; top: 8px; left: 4px"></ion-spinner>
+              <button class="button button-energized icon-only" ion-audio-play></button>
+            </ion-audio-controls>
+          </div>
+        </div>
+      </div>
+    </ion-audio-track>
+    <br><br><br><br><br>
+  </ion-content>
+  <ion-list style="position: absolute; bottom: 0px; width: 100%">
+
+    
+    <div class="item item-divider item-stable">
+      <ion-audio-progress-bar display-time display-info></ion-audio-progress-bar>
+    </div>
+  </ion-list>
+</ion-view>
+
+ 

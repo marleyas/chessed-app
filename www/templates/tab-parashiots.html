@@ -1,0 +1,12 @@
+<ion-view view-title="Parashiots">
+  <ion-content>    
+    <ion-list>
+      <div class="item item-divider">
+        Selecione a parashat desejada
+      </div>
+      <ion-item class="item-text" ng-repeat="p in parashiots" ng-href="#/tab/parashiots/{{ p.id }}">
+        {{ p.id }} - {{ p.p_name}}      
+      </ion-item>     
+    </ion-list>    
+  </ion-content>  
+</ion-view>

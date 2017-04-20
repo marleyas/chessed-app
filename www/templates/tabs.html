@@ -1,0 +1,33 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+  <!-- Parashat Tab -->
+  <ion-tab title="Início" icon-off="ion-ios-home" icon-on="ion-ios-home" href="#/tab/parashat">
+    <ion-nav-view name="tab-parashat"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Parashiots Tab -->
+  <ion-tab title="Parashiots" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" href="#/tab/parashiots">
+    <ion-nav-view name="tab-parashiots"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Divrin Tab -->
+  <ion-tab title="Divrim" icon-off="ion-mic-a" icon-on="ion-mic-a" href="#/tab/divre">
+    <ion-nav-view name="tab-divre"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- Torah Tab -->
+  <ion-tab title="Torá" icon-off="ion-ios-pie" icon-on="ion-ios-pie-outline" href="#/tab/torah">
+    <ion-nav-view name="tab-torah"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Sidur Tab -->
+  <ion-tab title="Outros Livros" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/biblia-sidur">
+    <ion-nav-view name="tab-sidur"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
